@@ -1,4 +1,3 @@
-import { MadeWithDyad } from "@/components/made-with-dyad";
 import React, { useState } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -96,7 +95,6 @@ const Index = () => {
           </div>
         </CardContent>
       </Card>
-      <MadeWithDyad />
     </div>
   );
 };
