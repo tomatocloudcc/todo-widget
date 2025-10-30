@@ -72,8 +72,8 @@ const Index = () => {
             </Button>
           </div>
 
-          {/* 待办事项列表 */}
-          <div className="space-y-2">
+          {/* 待办事项列表 - 限制最大高度并添加滚动条 */}
+          <div className="space-y-2 max-h-64 overflow-y-auto">
             {todos.map((todo) => (
               <div key={todo.id} className="flex items-center gap-3 p-2 rounded hover:bg-gray-50">
                 <Checkbox
