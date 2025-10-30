@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
@@ -12,12 +12,21 @@ interface TodoItem {
 }
 
 const Index = () => {
-  const [todos, setTodos] = useState<TodoItem[]>([
-    { id: '1', text: '购买 groceries', completed: false },
-    { id: '2', text: '回复邮件', completed: true },
-    { id: '3', text: '准备会议材料', completed: false },
-  ]);
+  const [todos, setTodos] = useState<TodoItem[]>([]);
   const [newTodo, setNewTodo] = useState('');
+
+  // 从localStorage加载TODO事项
+  useEffect(() => {
+    const savedTodos = localStorage.getItem('todos');
+    if (savedTodos) {
+      setTodos(JSON.parse(savedTodos));
+    }
+  }, []);
+
+  // 保存TODO事项到localStorage
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
 
   const addTodo = () => {
     if (newTodo.trim()) {
